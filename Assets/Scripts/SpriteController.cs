@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
-using Unity.Netcode;
+using UnityEngine.Tilemaps;
 
-public class SpriteController : NetworkBehaviour
+public class SpriteController : MonoBehaviour
 {
     public Sprite draggingSprite;
-    public GameObject toCreate;
+    public Tilemap tilemap;
     
     private Vector3 _offset;
     private bool _isDragging;
@@ -21,7 +22,6 @@ public class SpriteController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnMouseDrag()
@@ -32,10 +32,15 @@ public class SpriteController : NetworkBehaviour
         }
         
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 layeredMousePosition = new Vector3(
+            mousePosition.x,
+            mousePosition.y,
+            transform.position.z
+        );
 
         if (!_isDragging)
         {
-            _offset = transform.position - mousePosition;
+            _offset = layeredMousePosition - mousePosition;
             _spriteRenderer.sprite = draggingSprite;
             _isDragging = true;
         }
@@ -47,30 +52,18 @@ public class SpriteController : NetworkBehaviour
     {
         _isDragging = false;
         _spriteRenderer.sprite = _stillSprite;
-        if (!IsServer && IsOwner) //Only send an RPC to the server on the client that owns the NetworkObject that owns this NetworkBehaviour instance
-        {
-            SendInstantiateMessageClientRpc();
-        } else {
-            Debug.Log("HELP");
-            ServerInstantiateObjectServerRpc();
-        }
+        SnapToGrid();
     }
 
-    [ClientRpc]
-    void SendInstantiateMessageClientRpc()
+    private void SnapToGrid()
     {
-        Debug.Log($"Client sending instantiate message");
-        if (IsOwner)
+        if (!Camera.main)
         {
-            ServerInstantiateObjectServerRpc();
+            return;
         }
-    }
-
-    [ServerRpc]
-    void ServerInstantiateObjectServerRpc()
-    {
-        Debug.Log($"Server instantiating object");
-        GameObject go = Instantiate(this.toCreate, transform.position, Quaternion.identity);
-        go.GetComponent<NetworkObject>().Spawn();
+        
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int tilePos = tilemap.WorldToCell(mouseWorldPos);
+        transform.position = tilemap.GetCellCenterWorld(tilePos);
     }
 }
