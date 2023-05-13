@@ -39,22 +39,5 @@ public class GameManager : MonoBehaviour
 
     static void SubmitNewPosition(GameObject prefab)
     {
-        if (GUILayout.Button(NetworkManager.Singleton.IsServer ? "Move" : "Request Position Change"))
-        {
-            if (NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsClient )
-            {
-                foreach (ulong uid in NetworkManager.Singleton.ConnectedClientsIds)
-                    NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<HelloWorldPlayer>().Move();
-
-                GameObject go = Instantiate(myPrefab, Vector3.zero, Quaternion.identity);
-                go.GetComponent<NetworkObject>().Spawn();
-            }
-            else
-            {
-                var playerObject = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject();
-                var player = playerObject.GetComponent<HelloWorldPlayer>();
-                player.Move();
-            }
-        }
     }
 }
