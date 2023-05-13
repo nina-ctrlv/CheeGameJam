@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789f1003ad28e18a396f00e533b5f61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  draggingSprite: {fileID: 21300000, guid: daf2ab606d4db0d4f9ecf4c02137d2a8, type: 3}
 --- !u!1 &2029420002
 GameObject:
   m_ObjectHideFlags: 0

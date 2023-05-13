@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class SpriteController : MonoBehaviour
 {
-    private Vector3 _offset;
-    private bool _isDragging = false;
+    public Sprite draggingSprite;
     
+    private Vector3 _offset;
+    private bool _isDragging;
+    private SpriteRenderer _spriteRenderer;
+    private Sprite _stillSprite;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _stillSprite = _spriteRenderer.sprite;
     }
 
     // Update is called once per frame
@@ -29,6 +34,7 @@ public class SpriteController : MonoBehaviour
         if (!_isDragging)
         {
             _offset = transform.position - mousePosition;
+            _spriteRenderer.sprite = draggingSprite;
             _isDragging = true;
         }
 
@@ -38,5 +44,6 @@ public class SpriteController : MonoBehaviour
     private void OnMouseUp()
     {
         _isDragging = false;
+        _spriteRenderer.sprite = _stillSprite;
     }
 }
