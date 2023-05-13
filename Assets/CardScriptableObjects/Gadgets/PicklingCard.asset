@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fea1c8631ccad4d9cb2c0c72dcaad5, type: 3}
+  m_Name: PicklingCard
+  m_EditorClassIdentifier: 
+  name: Pickling
+  description: salty
+  artwork: {fileID: 21300000, guid: bed5bb408d805a54e8e3b34cbeebf1be, type: 3}
+  cookLevel: 2
+  speed: 2
