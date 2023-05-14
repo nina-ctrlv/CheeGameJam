@@ -19,8 +19,8 @@ public class CardDisplay : MonoBehaviour
     void Start()
     {
         nameText.text = card.name;
-        cookLevelText.text = "cook\n" + card.cookLevel.ToString();
-        speedText.text = "speed\n" + card.speed.ToString();
+        cookLevelText.text = card.cookLevel.ToString();
+        speedText.text = card.spawnFrequency.ToString();
         descriptionText.text = card.description;
 
         cardArtworkImage.sprite = card.artwork;

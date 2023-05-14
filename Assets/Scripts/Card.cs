@@ -9,6 +9,13 @@ public class Card : ScriptableObject
     public new string name;
     public string description;
     public Sprite artwork;
-    public int cookLevel;
-    public int speed;
+
+    // Tower info
+    public float spawnFrequency;
+    public float spawnRange;
+
+    // Spawned info
+    public float cookLevel;
+    public float spawnedItemSpeed;
+    public Sprite spawnedArtwork;
 }

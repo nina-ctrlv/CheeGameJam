@@ -95,6 +95,7 @@ public class SpriteController : NetworkBehaviour
     {
         Debug.Log($"Server instantiating object");
         GameObject go = Instantiate(this.toCreate, transform.position, Quaternion.identity);
+        go.GetComponent<Spawner>().spawnData = this.GetComponent<CardDisplay>().card;
         go.GetComponent<NetworkObject>().Spawn();
     }
 }
