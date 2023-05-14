@@ -1,11 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Unity.Netcode;
 
-public class SpriteController : MonoBehaviour
+public class SpriteController : NetworkBehaviour
 {
     public Sprite draggingSprite;
     public Tilemap tilemap;
+    public GameObject toCreate;
     
     private Vector3 _offset;
     private bool _isDragging;
@@ -31,21 +32,16 @@ public class SpriteController : MonoBehaviour
             return;
         }
         
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 layeredMousePosition = new Vector3(
-            mousePosition.x,
-            mousePosition.y,
-            transform.position.z
-        );
+        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        newPosition.z = transform.position.z;
 
         if (!_isDragging)
         {
-            _offset = layeredMousePosition - mousePosition;
             _spriteRenderer.sprite = draggingSprite;
             _isDragging = true;
         }
 
-        transform.position = mousePosition + _offset;
+        transform.position = newPosition;
     }
 
     private void OnMouseUp()
@@ -53,6 +49,13 @@ public class SpriteController : MonoBehaviour
         _isDragging = false;
         _spriteRenderer.sprite = _stillSprite;
         SnapToGrid();
+        if (!IsServer && IsOwner) //Only send an RPC to the server on the client that owns the NetworkObject that owns this NetworkBehaviour instance
+        {
+            SendInstantiateMessageClientRpc();
+        } else {
+            Debug.Log("HELP");
+            ServerInstantiateObjectServerRpc();
+        }
     }
 
     private void SnapToGrid()
@@ -65,5 +68,23 @@ public class SpriteController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int tilePos = tilemap.WorldToCell(mouseWorldPos);
         transform.position = tilemap.GetCellCenterWorld(tilePos);
+    }
+
+    [ClientRpc]
+    void SendInstantiateMessageClientRpc()
+    {
+        Debug.Log($"Client sending instantiate message");
+        if (IsOwner)
+        {
+            ServerInstantiateObjectServerRpc();
+        }
+    }
+
+    [ServerRpc]
+    void ServerInstantiateObjectServerRpc()
+    {
+        Debug.Log($"Server instantiating object");
+        GameObject go = Instantiate(this.toCreate, transform.position, Quaternion.identity);
+        go.GetComponent<NetworkObject>().Spawn();
     }
 }
