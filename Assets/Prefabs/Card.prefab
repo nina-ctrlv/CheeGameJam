@@ -497,6 +497,9 @@ GameObject:
   - component: {fileID: 4919064076793627107}
   - component: {fileID: 4919064076793627104}
   - component: {fileID: 4919064076793627106}
+  - component: {fileID: -772625492160272938}
+  - component: {fileID: -642664100918708154}
+  - component: {fileID: -2709736686718088828}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -584,12 +587,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d842e1702ba8d4a98e9da1bff2d67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 15bf2276ea63c684895ff98d1da008d6, type: 2}
+  card: {fileID: 11400000, guid: ef76247b13227fb43b74537e406a3f46, type: 2}
   nameText: {fileID: 4919064076442491000}
   cookLevelText: {fileID: 4919064076257930921}
   speedText: {fileID: 4919064076684587677}
   descriptionText: {fileID: 4919064077168623634}
   cardArtworkImage: {fileID: 4919064078078753570}
+--- !u!114 &-772625492160272938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919064076793627105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f1003ad28e18a396f00e533b5f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggingSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  tilemap: {fileID: 0}
+  toCreate: {fileID: 1555849819389947141, guid: 625856ea199c440188f0b4ea11cf9801, type: 3}
+--- !u!61 &-642664100918708154
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919064076793627105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &-2709736686718088828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919064076793627105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &4919064077168623633
 GameObject:
   m_ObjectHideFlags: 0
