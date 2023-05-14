@@ -7,7 +7,7 @@ public class SpriteController : NetworkBehaviour
     public Sprite draggingSprite;
     public Tilemap tilemap;
     public GameObject toCreate;
-    
+
     private Vector3 _offset;
     private bool _isDragging;
     private SpriteRenderer _spriteRenderer;
@@ -31,7 +31,7 @@ public class SpriteController : NetworkBehaviour
         {
             return;
         }
-        
+
         Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = transform.position.z;
 
@@ -39,6 +39,10 @@ public class SpriteController : NetworkBehaviour
         {
             _spriteRenderer.sprite = draggingSprite;
             _isDragging = true;
+        }
+
+        for(var i = 0; i < transform.childCount; i++) {
+            transform.GetChild(i).gameObject.SetActive(false);
         }
 
         transform.position = newPosition;
@@ -52,10 +56,16 @@ public class SpriteController : NetworkBehaviour
         if (!IsServer && IsOwner) //Only send an RPC to the server on the client that owns the NetworkObject that owns this NetworkBehaviour instance
         {
             SendInstantiateMessageClientRpc();
-        } else {
+        }
+        else
+        {
             Debug.Log("HELP");
             ServerInstantiateObjectServerRpc();
         }
+
+        // Remove from hand and destroy object when placed
+        GameObject.Find("Hand").GetComponent<PlayerHand>().hand.Remove(this.GetComponent<CardDisplay>().card);
+        Destroy(gameObject);
     }
 
     private void SnapToGrid()
@@ -64,7 +74,7 @@ public class SpriteController : NetworkBehaviour
         {
             return;
         }
-        
+
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int tilePos = tilemap.WorldToCell(mouseWorldPos);
         transform.position = tilemap.GetCellCenterWorld(tilePos);
