@@ -52,7 +52,7 @@ public class PathFollower : MonoBehaviour
 
     private void RecalculateMovement()
     {
-        var distanceToDestination =
+            var distanceToDestination =
             Vector3.Distance(transform.position, tilemap.GetCellCenterWorld(_nextPathNode.Value));
         if (distanceToDestination > 0.1)
         {
@@ -119,20 +119,16 @@ public class PathFollower : MonoBehaviour
         while (true)
         {
             var neighbors = GetNeighbors(current, _straightNeighbors);
-
             var count = 0;
-
-            var next = neighbors[0];
-
-            if (neighbors[0] != previous)
+            Vector3Int next = default;
+            
+            foreach (var neighbor in neighbors)
             {
-                count++;
-            }
-
-            if (neighbors.Length > 1 && neighbors[1] != previous)
-            {
-                next = neighbors[1];
-                count++;
+                if (neighbor != previous)
+                {
+                    count++;
+                    next = neighbor;
+                }
             }
             
             if (count == 0)
@@ -169,10 +165,9 @@ public class PathFollower : MonoBehaviour
         throw new Exception("Expected there to be a final path segment");
     }
 
-    private Vector3Int[] GetNeighbors(Vector3Int currentPosition, Vector3Int[] neighborPositions)
+    private LinkedList<Vector3Int> GetNeighbors(Vector3Int currentPosition, Vector3Int[] neighborPositions)
     {
-        Vector3Int[] neighbors = new Vector3Int[2];
-        var count = 0;
+        var neighbors = new LinkedList<Vector3Int>();
         var isFinalPathSegment = false;
         
         foreach (var neighbor in neighborPositions)
@@ -181,12 +176,7 @@ public class PathFollower : MonoBehaviour
             
             if (IsPathTile(position))
             {
-                neighbors[count++] = position;
-            }
-            
-            if (count > 2)
-            {
-                throw new Exception("expected at most two neighbors on a linear path");
+                neighbors.AddLast(position);
             }
 
             if (IsFinalPathSegment(position))
@@ -195,24 +185,12 @@ public class PathFollower : MonoBehaviour
             }
         }
 
-        if (count == 0 && !isFinalPathSegment)
+        if (neighbors.Count == 0 && !isFinalPathSegment)
         {
             throw new Exception("Unexpected final path segment!");
         }
 
-        if (count == 2)
-        {
-            return neighbors;
-        }
-
-        if (count == 0)
-        {
-            return Array.Empty<Vector3Int>();
-        }
-
-        Vector3Int[] singleNeighbor = { neighbors[0] };
-
-        return singleNeighbor;
+        return neighbors;
     }
 
     private bool IsFriendlyPathSegment(Vector3Int position)
@@ -243,17 +221,17 @@ public class PathFollower : MonoBehaviour
     private Vector3 FindAdjacentTile(Vector3Int tilePosition)
     {
         var neighbors = GetNeighbors(tilePosition, _straightNeighbors);
-        if (neighbors.Length == 0)
+        if (neighbors.Count == 0)
         {
             neighbors = GetNeighbors(tilePosition, _diagonalNeighbors);
         }
 
-        if (neighbors.Length == 0)
+        if (neighbors.Count == 0)
         {
             throw new Exception("Could not find a suitable path to snap to");
         }
 
-        return GetTileWorldPosition(neighbors[0]);
+        return GetTileWorldPosition(neighbors.First.Value);
     }
 
     private Vector3 GetTileWorldPosition(Vector3 tilePosition)
