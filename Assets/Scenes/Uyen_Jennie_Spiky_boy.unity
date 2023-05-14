@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 592070003}
   - component: {fileID: 592070007}
   - component: {fileID: 592070006}
+  - component: {fileID: 592070008}
   m_Layer: 0
   m_Name: Spiky boy
   m_TagString: Untagged
@@ -337,7 +338,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.006766066, y: 0}
@@ -353,6 +354,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18467826, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &592070008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592070002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5214830e70242f2a701b618fa1a275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1357084199
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +377,7 @@ GameObject:
   - component: {fileID: 1357084201}
   - component: {fileID: 1357084200}
   - component: {fileID: 1357084202}
+  - component: {fileID: 1357084203}
   m_Layer: 0
   m_Name: Spiked Ball
   m_TagString: Untagged
@@ -448,9 +462,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.14
+  m_Radius: 0.5
+--- !u!114 &1357084203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357084199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0447db2f274be44ebba918e25357b045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 2.5
