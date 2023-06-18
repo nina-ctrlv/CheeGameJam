@@ -15,5 +15,9 @@ MonoBehaviour:
   name: Pickling
   description: salty
   artwork: {fileID: 21300000, guid: bed5bb408d805a54e8e3b34cbeebf1be, type: 3}
+  type: 1
+  spawnFrequency: 0
+  spawnRange: 0
   cookLevel: 2
-  speed: 2
+  spawnedItemSpeed: 0
+  spawnedArtwork: {fileID: 0}

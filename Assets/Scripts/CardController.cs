@@ -1,23 +1,27 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Unity.Netcode;
+using UnityEngine.Serialization;
 
 public class CardController : NetworkBehaviour
 {
-    public Sprite draggingSprite;
     public Tilemap tilemap;
-    public GameObject toCreate;
+    public Card card;
 
     private Vector3 _offset;
     private bool _isDragging;
     private SpriteRenderer _spriteRenderer;
     private Sprite _stillSprite;
+    private Sprite _draggingSprite;
+    [FormerlySerializedAs("toCreate")] public GameObject _toCreate;
 
     // Start is called before the first frame update
     void Start()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _stillSprite = _spriteRenderer.sprite;
+        _draggingSprite = card.draggingSprite;
+        _toCreate = card.itemToSpawn;
     }
 
     // Update is called once per frame
@@ -37,7 +41,7 @@ public class CardController : NetworkBehaviour
 
         if (!_isDragging)
         {
-            _spriteRenderer.sprite = draggingSprite;
+            _spriteRenderer.sprite = _draggingSprite;
             _isDragging = true;
         }
 
@@ -94,7 +98,7 @@ public class CardController : NetworkBehaviour
     void ServerInstantiateObjectServerRpc()
     {
         Debug.Log($"Server instantiating object");
-        GameObject go = Instantiate(this.toCreate, transform.position, Quaternion.identity);
+        GameObject go = Instantiate(this._toCreate, transform.position, Quaternion.identity);
         go.GetComponent<Spawner>().spawnData = this.GetComponent<CardDisplay>().card;
         go.GetComponent<NetworkObject>().Spawn();
     }

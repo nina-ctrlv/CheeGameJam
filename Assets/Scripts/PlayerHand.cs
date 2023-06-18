@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -22,8 +21,7 @@ public class PlayerHand : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, transform.position + offset, transform.rotation, transform);
             newCard.GetComponent<CardDisplay>().card = cardInfo;
             newCard.GetComponent<CardController>().tilemap = tilemap;
-            newCard.GetComponent<CardController>().toCreate = cardInfo.itemToSpawn;
-            newCard.GetComponent<CardController>().draggingSprite = cardInfo.draggingSprite;
+            newCard.GetComponent<CardController>().card = cardInfo;
             offset.x += cardPrefab.transform.localScale.x + cardGap;
         });
     }
