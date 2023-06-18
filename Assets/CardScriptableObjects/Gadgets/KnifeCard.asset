@@ -20,4 +20,5 @@ MonoBehaviour:
   spawnRange: 0
   cookLevel: 1
   spawnedItemSpeed: 0
-  spawnedArtwork: {fileID: 0}
+  itemToSpawn: {fileID: 0}
+  draggingSprite: {fileID: 21300000, guid: f723c985fd4394dc7bb956aff706225b, type: 3}

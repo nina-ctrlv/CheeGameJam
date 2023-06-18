@@ -15,9 +15,10 @@ MonoBehaviour:
   name: Egg
   description: Cracks me up
   artwork: {fileID: 21300000, guid: 63abad79701657a42b800b6d333ac84b, type: 3}
+  type: 0
   spawnFrequency: 0
   spawnRange: 0
   cookLevel: 1
   spawnedItemSpeed: 0
-  spawnedArtwork: {fileID: 0}
-  toInstantiate: {fileID: 0}
+  itemToSpawn: {fileID: 2982767512022896040, guid: 3640c383fe6cd42a885af8f804b0d570, type: 3}
+  draggingSprite: {fileID: 21300000, guid: 034c5d0f27aaa451fbcef78cbf34ea94, type: 3}

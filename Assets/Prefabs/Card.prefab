@@ -605,9 +605,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789f1003ad28e18a396f00e533b5f61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggingSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
   tilemap: {fileID: 0}
-  toCreate: {fileID: 1555849819389947141, guid: 625856ea199c440188f0b4ea11cf9801, type: 3}
+  card: {fileID: 0}
+  _toCreate: {fileID: 1555849819389947141, guid: 625856ea199c440188f0b4ea11cf9801, type: 3}
 --- !u!61 &-642664100918708154
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -44,10 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d4c8eb04c08124d8c94a6a68268ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand:
+  hand: []
+  foodCards:
   - {fileID: 11400000, guid: 18933e5cbee809047a57790af805df1c, type: 2}
+  - {fileID: 11400000, guid: f2770040a636de341ab7b2e9bf0ce840, type: 2}
   - {fileID: 11400000, guid: 15bf2276ea63c684895ff98d1da008d6, type: 2}
   - {fileID: 11400000, guid: 98025faae6f345743880a7eb09d4b5c2, type: 2}
+  gadgetCards:
+  - {fileID: 11400000, guid: 1ffd15dc132006c4aa7ff38d1cedcd37, type: 2}
+  - {fileID: 11400000, guid: 546622ccf18fa854a8da6992e4fcd7d8, type: 2}
+  - {fileID: 11400000, guid: 9b22cfe3a957d3641b6fca2b5d4befa8, type: 2}
+  - {fileID: 11400000, guid: 822c201c62ec49d4e81b19c7ea7f665e, type: 2}
   cardPrefab: {fileID: 4919064076793627105, guid: 43c34ab9ffda5fc46bb519f3b9e55ae8, type: 3}
   cardGap: 0.5
   tilemap: {fileID: 0}

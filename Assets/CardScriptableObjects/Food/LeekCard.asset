@@ -15,5 +15,10 @@ MonoBehaviour:
   name: Leek
   description: Super yummy
   artwork: {fileID: 21300000, guid: e3c646c6dfb4b3e40a42d3ec64250e39, type: 3}
+  type: 0
+  spawnFrequency: 0
+  spawnRange: 0
   cookLevel: 2
-  speed: 3
+  spawnedItemSpeed: 0
+  itemToSpawn: {fileID: 2147158638087881598, guid: c79ff4f917a624daba34c5cfeca15a53, type: 3}
+  draggingSprite: {fileID: 21300000, guid: 6d711e7e1a0ab49e2b152075d32fe8c4, type: 3}

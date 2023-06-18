@@ -11,6 +11,7 @@ public class CardController : NetworkBehaviour
     public Card card;
 
     private Vector3 _originalPosition;
+    private Vector3 _originalScale;
     private bool _isDragging;
     private SpriteRenderer _spriteRenderer;
     private Sprite _stillSprite;
@@ -22,6 +23,7 @@ public class CardController : NetworkBehaviour
     void Start()
     {
         _originalPosition = transform.position;
+        _originalScale = transform.localScale;
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _stillSprite = _spriteRenderer.sprite;
         _draggingSprite = card.draggingSprite;
@@ -50,6 +52,8 @@ public class CardController : NetworkBehaviour
             _isDragging = true;
         }
 
+        transform.localScale = new Vector3(1, 1, 1);
+
         transform.position = newPosition;
     }
 
@@ -64,6 +68,7 @@ public class CardController : NetworkBehaviour
         {
             SetTransformVisibility(true);
             transform.position = _originalPosition;
+            transform.localScale = _originalScale;
             _isDragging = false;
             return;
         }
