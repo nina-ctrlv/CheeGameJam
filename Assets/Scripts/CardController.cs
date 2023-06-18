@@ -120,6 +120,7 @@ public class CardController : NetworkBehaviour
         }
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = tilemap.transform.position.z;
         return tilemap.WorldToCell(mouseWorldPos);
     }
 
