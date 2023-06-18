@@ -1,6 +1,8 @@
+using System.Linq;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.contentColor = Color.black;
         GUILayout.BeginArea(new Rect(10, 10, 300, 300));
         if (!_isClient && !NetworkManager.Singleton.IsServer)
         {
@@ -52,13 +55,33 @@ public class GameManager : MonoBehaviour
 
     private void StatusLabels()
     {
-        var mode = NetworkManager.Singleton.IsHost ?
-            "Host" : NetworkManager.Singleton.IsServer ? "Server" : "Client";
+        var mode = NetworkManager.Singleton.IsHost ? "Host" : NetworkManager.Singleton.IsServer ? "Server" : "Client";
 
         GUILayout.Label("Transport: " +
-            NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetType().Name);
+                        NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetType().Name);
         GUILayout.Label("Mode: " + mode);
         GUILayout.Label("Address: " + _unityTransport.ConnectionData.Address);
+        GUILayout.Label("IsConnected: " + NetworkManager.Singleton.IsConnectedClient);
+        WaitForGameStart();
+    }
+
+    private void WaitForGameStart()
+    {
+        if (NetworkManager.Singleton.IsHost && NetworkManager.Singleton.ConnectedClients.Keys.Count() == 2)
+        {
+            LoadNextScene();
+        }
+
+        if (NetworkManager.Singleton.IsClient && NetworkManager.Singleton.IsConnectedClient)
+        {
+            LoadNextScene();
+        }
+    }
+
+    private void LoadNextScene()
+    {
+        var nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     static void SubmitNewPosition(GameObject prefab)
