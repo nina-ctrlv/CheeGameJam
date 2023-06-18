@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand:
   - {fileID: 11400000, guid: 18933e5cbee809047a57790af805df1c, type: 2}
-  - {fileID: 11400000, guid: ef76247b13227fb43b74537e406a3f46, type: 2}
   - {fileID: 11400000, guid: 15bf2276ea63c684895ff98d1da008d6, type: 2}
   - {fileID: 11400000, guid: 98025faae6f345743880a7eb09d4b5c2, type: 2}
   cardPrefab: {fileID: 4919064076793627105, guid: 43c34ab9ffda5fc46bb519f3b9e55ae8, type: 3}

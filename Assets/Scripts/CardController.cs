@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Unity.Netcode;
 
-public class SpriteController : NetworkBehaviour
+public class CardController : NetworkBehaviour
 {
     public Sprite draggingSprite;
     public Tilemap tilemap;

@@ -28,8 +28,8 @@ public class Spawner : MonoBehaviour
 
             // newObj.getComponent<projectile || food>().speed = spawnData.spawnedItemSpeed
             // newObj.getComponent<projectile || food>().cookLevel = spawnData.cookLevel
-            newObj.GetComponent<SpriteRenderer>().sprite = spawnData.spawnedArtwork;
-            newObj.GetComponent<testSpawnedItem>().speed = spawnData.spawnedItemSpeed;
+            // newObj.GetComponent<SpriteRenderer>().sprite = spawnData.spawnedArtwork;
+            // newObj.GetComponent<testSpawnedItem>().speed = spawnData.spawnedItemSpeed;
         }
     }
 

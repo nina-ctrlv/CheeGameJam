@@ -17,5 +17,6 @@ public class Card : ScriptableObject
     // Spawned info
     public float cookLevel;
     public float spawnedItemSpeed;
-    public Sprite spawnedArtwork;
+    public GameObject itemToSpawn;
+    public Sprite draggingSprite;
 }

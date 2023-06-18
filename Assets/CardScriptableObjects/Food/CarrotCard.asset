@@ -15,5 +15,9 @@ MonoBehaviour:
   name: Carrot
   description: They organge
   artwork: {fileID: 21300000, guid: f3084c332aa4e6a4ba18fd469f604210, type: 3}
+  spawnFrequency: 0
+  spawnRange: 0
   cookLevel: 9000
-  speed: 2
+  spawnedItemSpeed: 0
+  spawnedArtwork: {fileID: 0}
+  toInstantiate: {fileID: 0}

@@ -21,7 +21,9 @@ public class PlayerHand : MonoBehaviour
         {
             GameObject newCard = Instantiate(cardPrefab, transform.position + offset, transform.rotation, transform);
             newCard.GetComponent<CardDisplay>().card = cardInfo;
-            newCard.GetComponent<SpriteController>().tilemap = tilemap;
+            newCard.GetComponent<CardController>().tilemap = tilemap;
+            newCard.GetComponent<CardController>().toCreate = cardInfo.itemToSpawn;
+            newCard.GetComponent<CardController>().draggingSprite = cardInfo.draggingSprite;
             offset.x += cardPrefab.transform.localScale.x + cardGap;
         });
     }
