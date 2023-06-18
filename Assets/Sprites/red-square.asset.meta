@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d18b945ac73ce2aa997af4ad161088f9
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
+=======
+guid: 852655ced2f49455d8b526618d727462
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+>>>>>>> Leek animation
   userData: 
   assetBundleName: 
   assetBundleVariant: 
