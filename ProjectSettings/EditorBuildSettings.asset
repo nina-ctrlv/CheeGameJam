@@ -6,15 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Nina.unity
+    path: Assets/Scenes/actualGameScenes/MainMenu.unity
     guid: 4f664bd7592574e92923922c6b5b9bdd
   - enabled: 1
-    path: Assets/Scenes/TdMap.unity
+    path: Assets/Scenes/actualGameScenes/TdMap.unity
     guid: 72702423f9adc4e07adb47318bbe84f2
-  - enabled: 1
-    path: Assets/Scenes/Uyen_Jennie_Scence.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/PlacingCardScene.unity
-    guid: 4e756d4d030aa484f96bce61febb53e7
   m_configObjects: {}
