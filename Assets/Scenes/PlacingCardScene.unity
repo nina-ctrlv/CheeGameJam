@@ -9227,9 +9227,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightSpriteHappy: {fileID: 0}
-  highlightSpriteSad: {fileID: 0}
-  allowedPathSprite: {fileID: 0}
-  mapDisallowedSprite: {fileID: 0}
 --- !u!1 &1020209530
 GameObject:
   m_ObjectHideFlags: 0
@@ -9337,7 +9334,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2247966944198480654, guid: b05e922e527df88408f5f41226d48db4, type: 3}
   m_PrefabInstance: {fileID: 1343808680}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1343808682
+--- !u!114 &1343808685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9346,19 +9343,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1343808681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62166ef4c459f11ffa85d2c9624227f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 16921517d8ac4ad9800f18d88b20234f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathTiles:
-  - {fileID: 21300000, guid: e009f14e0e9204d70b6b69c16454eba1, type: 3}
-  - {fileID: 21300000, guid: 89de7c4d38a6a41d89e814086fffd4b3, type: 3}
+  pathSprites:
   - {fileID: 21300000, guid: 3e2616a3eca6d4efaae3dfbdfc14bc2d, type: 3}
   - {fileID: 21300000, guid: 2732c022c61904e47b141556796d8d7c, type: 3}
   - {fileID: 21300000, guid: 7ad67a336d027464fa9081e3a496ed74, type: 3}
-  - {fileID: 21300000, guid: 8c2d5b1198cea47c28e155bde9cc4df1, type: 3}
-  - {fileID: 21300000, guid: 2a5d1217604e84f8496ea64822367897, type: 3}
-  - {fileID: 21300000, guid: dfb2596b0cc4e4398adf23ee5b089679, type: 3}
-  - {fileID: 21300000, guid: c8c0909d37ee54902bc624a1c64a9975, type: 3}
+  - {fileID: 21300000, guid: e009f14e0e9204d70b6b69c16454eba1, type: 3}
+  - {fileID: 21300000, guid: 89de7c4d38a6a41d89e814086fffd4b3, type: 3}
 --- !u!1 &2029420002
 GameObject:
   m_ObjectHideFlags: 0

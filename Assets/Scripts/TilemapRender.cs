@@ -10,7 +10,6 @@ public class TilemapRender : MonoBehaviour
     private Vector3Int _originalPosition;
     private Tilemap _tilemap;
     private Camera _mainCamera;
-    private Tilemap _tilemap1;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +23,11 @@ public class TilemapRender : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            HighlightTile();
+            // HighlightTile();
         }
         else
         {
-            UnhighlightTile();
+            // UnhighlightTile();
         }
     }
 
