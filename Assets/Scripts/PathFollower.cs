@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class PathFollower : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Sprite pathSprite;
+    public Sprite[] pathSprites;
     public Sprite friendlySprite;
     public Sprite enemySprite;
 
@@ -15,6 +15,7 @@ public class PathFollower : MonoBehaviour
     private LinkedListNode<Vector3Int> _nextPathNode;
     private bool _complete;
     private Vector3 _movement;
+    private HashSet<Sprite> _pathSprites;
 
     private readonly Vector3Int[] _straightNeighbors =
     {
@@ -35,6 +36,7 @@ public class PathFollower : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        _pathSprites = new HashSet<Sprite>(pathSprites);
         SnapToMap();
         PlanPath();
     }
@@ -243,6 +245,6 @@ public class PathFollower : MonoBehaviour
     private bool IsPathTile(Vector3Int position)
     {
         var tile = tilemap.GetTile<Tile>(position);
-        return tile != null && tile.sprite == pathSprite;
+        return tile != null && _pathSprites.Contains(tile.sprite);
     }
 }
