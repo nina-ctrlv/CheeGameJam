@@ -2,7 +2,6 @@ using System.Linq;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -71,17 +70,11 @@ public class GameManager : MonoBehaviour
         {
             LoadNextScene();
         }
-
-        if (NetworkManager.Singleton.IsClient && NetworkManager.Singleton.IsConnectedClient)
-        {
-            LoadNextScene();
-        }
     }
 
     private void LoadNextScene()
     {
-        var nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        NetworkManager.Singleton.SceneManager.LoadScene("TdMap", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     static void SubmitNewPosition(GameObject prefab)

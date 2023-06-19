@@ -93,6 +93,12 @@ public class CardController : NetworkBehaviour
 
     private bool CanDropTile(Vector3Int position)
     {
+       if (NetworkManager.Singleton.IsHost && position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, 0, Camera.main.nearClipPlane)).x)  {
+            return false;
+       } else if(NetworkManager.Singleton.IsConnectedClient && position.x < Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, 0, Camera.main.nearClipPlane)).x) {
+            return false;
+       }
+
         var tile = tilemap.GetTile<Tile>(position);
         var isPathTile = GameConfiguration.Instance.IsPathTile(tile);
 
