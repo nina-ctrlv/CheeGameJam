@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -32,6 +33,7 @@ public class PlayerHand : MonoBehaviour
             newCard.GetComponent<CardController>().tilemap = tilemap;
             newCard.GetComponent<CardController>().card = cardInfo;
             offset.x += cardPrefab.transform.localScale.x + cardGap;
+            newCard.GetComponent<NetworkObject>().Spawn();
         });
     }
 }

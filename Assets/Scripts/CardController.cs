@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
 public class CardController : NetworkBehaviour
@@ -17,7 +15,7 @@ public class CardController : NetworkBehaviour
     private Sprite _stillSprite;
     private Sprite _draggingSprite;
     private GameConfiguration _gameConfiguration;
-    [FormerlySerializedAs("toCreate")] public GameObject _toCreate;
+    private GameObject _toCreate;
 
     // Start is called before the first frame update
     void Start()
@@ -93,11 +91,16 @@ public class CardController : NetworkBehaviour
 
     private bool CanDropTile(Vector3Int position)
     {
-       if (NetworkManager.Singleton.IsHost && position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, 0, Camera.main.nearClipPlane)).x)  {
+        if (NetworkManager.Singleton.IsHost && position.x >
+            Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 0, Camera.main.nearClipPlane)).x)
+        {
             return false;
-       } else if(NetworkManager.Singleton.IsConnectedClient && position.x < Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, 0, Camera.main.nearClipPlane)).x) {
+        }
+        else if (NetworkManager.Singleton.IsConnectedClient && position.x <
+                 Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 0, Camera.main.nearClipPlane)).x)
+        {
             return false;
-       }
+        }
 
         var tile = tilemap.GetTile<Tile>(position);
         var isPathTile = GameConfiguration.Instance.IsPathTile(tile);
@@ -145,7 +148,7 @@ public class CardController : NetworkBehaviour
     {
         Debug.Log($"Server instantiating object");
         GameObject go = Instantiate(this._toCreate, transform.position, Quaternion.identity);
-        go.GetComponent<Spawner>().spawnData = this.GetComponent<CardDisplay>().card;
+        // go.GetComponent<Spawner>().spawnData = this.GetComponent<CardDisplay>().card;
         go.GetComponent<NetworkObject>().Spawn();
     }
 }
